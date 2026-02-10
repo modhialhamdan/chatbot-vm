@@ -16,8 +16,10 @@ Then install the VS Code extension:
 Remote - SSH
 ## 1.2 Downloading PuTTY + FortiClient 
 Open a ServiceNow ticket to request installation from the IT team:
+
     -PuTTY
     -FortiClient VPN
+
 ## 1.3 Downloading FortiToken on your mobile
 Install FortiToken on your mobile phone.
 
@@ -38,6 +40,7 @@ You will have:
         IDM: kjWFHIJBDSJ43uhjdj
 
 Important notes: 
+
     -VPN must be connected before you can reach the VM.
     -VPN Connection will disconnect each time you laptop turns off or sleep.
 
@@ -54,7 +57,7 @@ Session :
 
 First time you connect, PuTTY may show a warning about the server key fingerprint.
 
-Click Accept / Yes (if you are sure the IP is correct and given by the company).
+Click Accept / Yes (if you are sure the IP is correct and given to you).
 
 ## 3.3 Login using the initial password
 
@@ -293,4 +296,5 @@ authorized_key
 You must connect using:
 Remote-SSH: Connect to Host...
 Not just “open terminal”.
+
 
