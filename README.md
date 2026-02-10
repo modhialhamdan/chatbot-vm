@@ -11,6 +11,7 @@ This guide explains everything end-to-end:
 # STEP 1: Install Required Tools
 ## 1.1 Downloading VS 
 Download it from the shared zipped file by Eng. Osamah.
+
 Then install the VS Code extension:
 Remote - SSH
 ## 1.2 Downloading PuTTY + FortiClient 
@@ -68,22 +69,22 @@ Best practice: Generate SSH keys inside the VM so secrets never leave the server
 
 ## 4.1 Generate the SSH key
 Run this inside the VM:
-
+```bash
 ssh-keygen -t ed25519 -C "vm-access"
-
+```
 Press Enter for default file location
 
 Press Enter twice if you want no passphrase.
 
 Expected key path:
-
+```bash
 ~/.ssh/id_ed25519
 ~/.ssh/id_ed25519.pub
-
+```
 ## 4.2 Confirm keys exist
-
+```bash
 ls -la ~/.ssh
-
+```
 
 # STEP 5: Enable Passwordless Login to the VM
 This step is only needed if your team requires passwordless SSH for repeated access.
@@ -92,30 +93,30 @@ Some companies keep password login enabled; others enforce keys.
 ## 5.1 Create authorized_keys
 
 Inside the VM:
-
+```bash
 mkdir -p ~/.ssh
 nano ~/.ssh/authorized_keys
-
+```
 ## 5.2 Add your public key
 
 Copy the VM public key:
-
+```bash
 cat ~/.ssh/id_ed25519.pub
-
+```
 Paste it into:
-
+```bash
 ~/.ssh/authorized_keys
-
+```
 Save:
 
-Ctrl + O → Enter
-Ctrl + X
+   Ctrl + O → Enter
+   Ctrl + X
 
 ## 5.3 Fix permissions
-
+```bash
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys
-
+```
 Common mistakes:
 
 File name must be authorized_keys.
@@ -138,9 +139,9 @@ Permission to push
 
 ## 7.1 Copy VM public key
 Inside the VM:
-
+```bash
 cat ~/.ssh/id_ed25519.pub
-
+```
 ## 7.2 Add it to Gitea
 From inside the VM, copy the public key.
 Then
@@ -160,9 +161,9 @@ This makes sure the VM always uses the correct key when connecting to Gitea.
 ## 8.1 Create/Edit SSH config
 
 Inside the VM:
-
+```bash
 nano ~/.ssh/config
-
+```
 Add:
 
 Host gitea
@@ -172,9 +173,10 @@ Host gitea
   IdentitiesOnly yes
 
 ## 8.2 Fix permissions
+```bash
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/config
-
+```
 
 Why this matters:
 
@@ -183,19 +185,19 @@ Without config, Git may ask for a password or use the wrong key.
 # STEP 9: Test Gitea SSH Connection
 
 Inside the VM:
-
+```bash
 ssh -T gitea
-
+```
 
 First time you may see:
-
+```bash
 Are you sure you want to continue connecting (yes/no)?
-
+```
 
 Type:
-
+```bash
 yes
-
+```
 
 Expected success output:
 
@@ -204,24 +206,24 @@ You've successfully authenticated, but Gitea does not provide shell access.
 
 # STEP 10: Clone the Chatbot Repository
 Inside the VM:
-
+```bash
 mkdir -p ~/dev
 cd ~/dev
-git clone git@gitea:<USER>@<key>/enterprise_chatbot.git
-
+git clone http://<user>:<key>@10.106.120.1:3000/osarraj/enterprise_chatbot.git
+```
 If it clones without password prompt → Everything is configured correctly.
 
 # STEP 11: Configure Git Identity (Required for Commits)
 Inside the VM:
-
+```bash
 git config --global user.name "<your-name>"
 git config --global user.email "<your-email>"
-
+```
 
 # STEP 12: Open Project in VS Code (Remote SSH)
 ## 12.1 Connect VS Code to the VM
 
-On Windows (local machine), open VS Code:
+On Windows open VS Code:
 
 Press:
 
@@ -234,9 +236,9 @@ Remote-SSH: Connect to Host...
 
 
 Enter:
-
+```bash
 ssh <your-username>@<VM_IP>
-
+```
 
 Select:
 
@@ -246,14 +248,14 @@ Accept / Trust host
 
 VS Code will open a new window:
 
-SSH: <VM_IP>  (or SSH: vm)
+SSH: <VM_IP>
 
 ## 12.2 Open the project folder
 
 In the VS Code remote window:
 
-File → Open Folder
-/home/<your-username>/dev/enterprise_chatbot
+   File → Open Folder
+   /home/<your-username>/dev/enterprise_chatbot
 
 Now you are editing the project directly on the VM.
 
@@ -261,44 +263,34 @@ Now you are editing the project directly on the VM.
 ## 1) Git asks for password
 
 If you see:
-
+```bash
 (git@<gitea>) Password:
-
-
+```
 Fix by ensuring:
-
 SSH key is added in Gitea
-
 VM has correct ~/.ssh/config for Gitea
-
 Run:
-
+```bash
 ssh -T gitea
-
+```
 ## 2) Bad owner or permissions on ~/.ssh/config
 
 Fix:
-
+```bash
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/config
-
+```
 ## 3) Wrong authorized_keys name
 
 Make sure it is:
-
 authorized_keys
 
-
 Not:
-
 authorized_key
 
 ## 4) VS Code opens only a terminal (not remote dev)
 
 You must connect using:
-
 Remote-SSH: Connect to Host...
-
-
-
 Not just “open terminal”.
+
