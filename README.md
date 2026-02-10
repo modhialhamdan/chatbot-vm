@@ -1,5 +1,6 @@
 # HOW TO CONNECT TO THE VM?
 This guide explains everything end-to-end:
+   
     1- Install required tools
     2- VPN access
     3- VM login via PuTTY
@@ -297,6 +298,7 @@ authorized_key
 You must connect using:
 
 Remote-SSH: Connect to Host...
+
 
 
 Not just “open terminal”.
