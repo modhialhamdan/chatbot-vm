@@ -73,7 +73,7 @@ Best practice: Generate SSH keys inside the VM so secrets never leave the server
 ## 4.1 Generate the SSH key
 Run this inside the VM:
 ```bash
-ssh-keygen -t ed25519 -C "vm-access"
+ssh-keygen -t ed25519 -C "vm_key"
 ```
 Press Enter for default file location
 
@@ -112,8 +112,8 @@ Paste it into:
 ```
 Save:
 
-   Ctrl + O → Enter
-   Ctrl + X
+    Ctrl + O → Enter
+    Ctrl + X
 
 ## 5.3 Fix permissions
 ```bash
@@ -169,11 +169,11 @@ nano ~/.ssh/config
 ```
 Add:
 
-Host gitea
-  HostName <GITEA_IP_OR_DOMAIN>
-  User git
-  IdentityFile ~/.ssh/id_ed25519
-  IdentitiesOnly yes
+    Host gitea
+       HostName 10.106.120.4 (do not forget to change 4)
+       User git
+       IdentityFile ~/.ssh/id_ed25519 ( or id_rsa, depend on your file)
+       IdentitiesOnly yes
 
 ## 8.2 Fix permissions
 ```bash
@@ -296,5 +296,6 @@ authorized_key
 You must connect using:
 Remote-SSH: Connect to Host...
 Not just “open terminal”.
+
 
 
