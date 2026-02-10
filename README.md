@@ -295,8 +295,11 @@ authorized_key
 ## 4) VS Code opens only a terminal (not remote dev)
 
 You must connect using:
+
 Remote-SSH: Connect to Host...
+
 Not just “open terminal”.
+
 
 
 
