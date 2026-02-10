@@ -230,12 +230,11 @@ On Windows open VS Code:
 
 Press:
 
-Ctrl + Shift + P
-
+    Ctrl + Shift + P
 
 Run:
 
-Remote-SSH: Connect to Host...
+    Remote-SSH: Connect to Host...
 
 
 Enter:
@@ -245,20 +244,22 @@ ssh <your-username>@<VM_IP>
 
 Select:
 
-Linux
+    Linux
 
-Accept / Trust host
+Then
+
+    Accept / Trust host
 
 VS Code will open a new window:
 
-SSH: <VM_IP>
+    SSH: 10.106.120.4 ( not 4, your number)
 
 ## 12.2 Open the project folder
 
 In the VS Code remote window:
 
-   File → Open Folder
-   /home/<your-username>/dev/enterprise_chatbot
+    File → Open Folder
+    /home/<your-username>/dev/enterprise_chatbot
 
 Now you are editing the project directly on the VM.
 
@@ -296,6 +297,7 @@ authorized_key
 You must connect using:
 Remote-SSH: Connect to Host...
 Not just “open terminal”.
+
 
 
 
