@@ -329,6 +329,7 @@ Try to create a branch to make all your changes inside this branch.
 If needed, you can safely return to the original code.
 
 Creating new branch :
+
 press the dev icon down left the screen, choose the
 
     + Create new branch from..
@@ -344,6 +345,7 @@ In folder scripts
 
     SCRIPT_GUIDE.md
 Will guide you to understand the commands.
+
 
 
 
