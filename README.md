@@ -300,6 +300,58 @@ Remote-SSH: Connect to Host...
 
 Not just “open terminal”.
 
+# HOW TO START RUNNING THE CODE ?
+# STEP 1: Install Required Tools
+In VSCode, open new Terminal.
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+```bash
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+```
+```bash
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+```
+```bash
+export PATH="$HOME/.local/bin:$PATH"
+```
+```bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+```bash
+uv sync
+```
+It might take sometime to sync the uv.
+# STEP 2: YOU CAN RUN IT NOW!
+Note to reduce chaos:
+Try to create a branch to make all your changes inside this branch.
+If needed, you can safely return to the original code.
+
+Creating new branch :
+press the dev icon down left the screen, choose the
+
+    + Create new branch from..
+    
+then choose
+
+    dev
+    
+then name it and dive in creativity.
+
+# STEP 3: USE THE SCRIPT_GUIDE TO RUN THE PROJECT
+In folder scripts 
+
+    SCRIPT_GUIDE.md
+Will guide you to understand the commands.
+
+
+
+
+
+
+
+
 
 
 
